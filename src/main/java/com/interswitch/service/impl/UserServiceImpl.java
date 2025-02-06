@@ -5,6 +5,7 @@ import com.interswitch.dto.request.LoginRequest;
 import com.interswitch.dto.response.CreateUserResponse;
 import com.interswitch.dto.response.LoginResponse;
 import com.interswitch.entity.User;
+import com.interswitch.enums.Role;
 import com.interswitch.exceptions.UserAlreadyExistsException;
 import com.interswitch.exceptions.UserNotFoundException;
 import com.interswitch.repository.UserRepository;
@@ -44,6 +45,7 @@ public class UserServiceImpl implements UserService {
         User newUser = User.builder()
                 .name(request.getName())
                 .email(request.getEmail())
+                .role(Role.valueOf("USER"))
                 .password(passwordEncoder.encode(request.getPassword()))
                 .build();
 

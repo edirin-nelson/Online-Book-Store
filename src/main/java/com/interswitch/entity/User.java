@@ -1,5 +1,6 @@
 package com.interswitch.entity;
 
+import com.interswitch.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,7 +25,8 @@ public class User implements UserDetails {
     private String name;
     private String email;
     private String password;
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
