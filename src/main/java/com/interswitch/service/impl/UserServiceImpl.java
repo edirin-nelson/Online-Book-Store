@@ -100,4 +100,12 @@ public class UserServiceImpl implements UserService {
         jwtTokenRepository.saveAll(validTokenByUser);
     }
 
+    public void updateUserRoleToAdmin(Long userId) {
+        Optional<User> user = userRepository.findById(userId);
+        if(user.isPresent()){
+            user.get().setRole(Role.ADMIN);
+            userRepository.save(user.get());
+        }
+    }
+
 }
